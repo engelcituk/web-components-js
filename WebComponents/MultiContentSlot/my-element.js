@@ -4,23 +4,18 @@ class MyElement extends HTMLElement {
         super();
         //Agregamos shadow down (API) y lo ponemos en modo open para poder acceder a este
         this.attachShadow({mode: 'open'}) //
-        this.title = this.getAttribute('title')
-        this.parrafo = this.getAttribute('parrafo')
-        this.img = this.getAttribute('img')
-
     }
     getTemplate(){
         const template = document.createElement('template')
         template.innerHTML = `
             <section>
                 <h2>
-                ${this.title}
+                    <slot name="title"></slot>
                 </h2>
                 <div>
                     <p>
-                        ${this.parrafo}
+                        <slot name="parrafo"></slot>
                     </p>
-                    <img src="${this.img}"/>
                 </div>
             </section>
             ${this.getStyles()}
